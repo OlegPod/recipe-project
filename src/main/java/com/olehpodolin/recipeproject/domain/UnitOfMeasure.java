@@ -11,7 +11,7 @@ public class UnitOfMeasure {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String oum;
+    private String uom;
 
     public Long getId() {
         return id;
@@ -21,11 +21,11 @@ public class UnitOfMeasure {
         this.id = id;
     }
 
-    public String getOum() {
-        return oum;
+    public String getUom() {
+        return uom;
     }
 
-    public void setOum(String oum) {
-        this.oum = oum;
+    public void setUom(String uom) {
+        this.uom = uom;
     }
 }
