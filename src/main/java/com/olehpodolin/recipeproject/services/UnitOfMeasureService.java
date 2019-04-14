@@ -17,6 +17,9 @@ public class UnitOfMeasureService {
 
     public UnitOfMeasure getUnitOfMeasure(String description) {
         Optional<UnitOfMeasure> unitOfMeasureOptional = unitOfMeasureRepository.findByUom(description);
+        if(!unitOfMeasureOptional.isPresent()) {
+            throw new RuntimeException("Unit Of Measure Not Found!!!");
+        }
         return unitOfMeasureOptional.get();
     }
 

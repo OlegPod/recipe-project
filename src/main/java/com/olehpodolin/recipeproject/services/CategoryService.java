@@ -17,8 +17,10 @@ public class CategoryService {
 
     public Category getCategory(String description) {
         Optional<Category> categoryOptional = categoryRepository.findByDescription(description);
+        if(!categoryOptional.isPresent()) {
+            throw new RuntimeException("Category not found!!!");
+        }
         return categoryOptional.get();
-
     }
 
 }

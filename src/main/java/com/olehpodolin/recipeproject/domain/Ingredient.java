@@ -8,11 +8,10 @@ public class Ingredient {
 
     public Ingredient() {}
 
-    public Ingredient(BigDecimal amount, UnitOfMeasure unitOfMeasure, String description, Recipe recipe) {
+    public Ingredient(BigDecimal amount, UnitOfMeasure unitOfMeasure, String description) {
         this.amount = amount;
         this.unitOfMeasure = unitOfMeasure;
         this.description = description;
-        this.recipe = recipe;
     }
 
     @Id

@@ -28,6 +28,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         initData();
     }
 
+    private UnitOfMeasure uom(String description){
+       return unitOfMeasureService.getUnitOfMeasure(description);
+    }
+
     private void initData() {
 
         Recipe guacamole = new Recipe();
@@ -41,22 +45,14 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         guacamole.setDescription("Perfect Guacamole");
 
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Each"),
-                "ripe avocados", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(.5), unitOfMeasureService.getUnitOfMeasure("Teaspoon"),
-                "kosher salt", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "fresh lime juice or lemon juice", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "minced red onion or thinly sliced green onion", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Each"),
-                "serrano chiles, stems and seeds removed, minced", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "cilantro (leaves and tender stems), finely chopped", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Dash"),
-                "freshly grated black pepper", guacamole));
-        guacamole.getIngredients().add(new Ingredient(new BigDecimal(.5), unitOfMeasureService.getUnitOfMeasure("Each"),
-                "ripe tomato, seeds and pulp removed, chopped", guacamole));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(2), uom("Each"), "ripe avocados"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(.5), uom("Teaspoon"), "kosher salt"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(1), uom("Tablespoon"), "fresh lime juice or lemon juice"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(2), uom("Tablespoon"), "minced red onion or thinly sliced green onion"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(2), uom("Each"), "serrano chiles, stems and seeds removed, minced"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(2), uom("Tablespoon"), "cilantro (leaves and tender stems), finely chopped"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(1), uom("Dash"), "freshly grated black pepper"));
+        guacamole.addIngredient(new Ingredient(new BigDecimal(.5), uom("Each"), "ripe tomato, seeds and pulp removed, chopped"));
 
         guacamole.setDirections("1 Cut avocado, remove flesh: Cut the avocados in half. Remove seed. \n" +
                 "Score the inside of the avocado with a blunt knife and scoop out the flesh with a spoon. Place in a bowl. \n" +
@@ -74,7 +70,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         guacamole.setNotes(new Notes("For a very quick guacamole just take a 1/4 cup of salsa and mix it in with your mashed avocados.\n" +
                                                 " The simplest version of guacamole is just mashed avocados with salt. \n" +
-                                                "Don't let the lack of availability of other ingredients stop you from making guacamole.", guacamole));
+                                                "Don't let the lack of availability of other ingredients stop you from making guacamole."));
         guacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
 
         recipeRepository.save(guacamole);
@@ -90,26 +86,16 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         spicyGrilledChickenTacos.setDescription("Spicy Grilled Chicken Tacos");
 
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "ancho chili powder", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Teaspoon"),
-                "dried oregano", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Teaspoon"),
-                "dried cumin", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Teaspoon"),
-                "sugar", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(.5), unitOfMeasureService.getUnitOfMeasure("Teaspoon"),
-                "salt", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Each"),
-                "clove garlic, finely chopped", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(1), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "finely grated orange zest", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "fresh-squeezed orange juice", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(2), unitOfMeasureService.getUnitOfMeasure("Tablespoon"),
-                "olive oil", spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient(new BigDecimal(6), unitOfMeasureService.getUnitOfMeasure("Each"),
-                "skinless, boneless chicken thighs (1 1/4 pounds)", spicyGrilledChickenTacos));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(2), uom("Tablespoon"), "ancho chili powder"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(1), uom("Teaspoon"), "dried oregano"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(1), uom("Teaspoon"), "dried cumin"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(1), uom("Teaspoon"), "sugar"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(.5), uom("Teaspoon"), "salt"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(1), uom("Each"), "clove garlic, finely chopped"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(1), uom("Tablespoon"), "finely grated orange zest"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(2), uom("Tablespoon"), "fresh-squeezed orange juice"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(2), uom("Tablespoon"), "olive oil"));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient(new BigDecimal(6), uom("Each"), "skinless, boneless chicken thighs (1 1/4 pounds)"));
 
         spicyGrilledChickenTacos.setDirections("1 Prepare a gas or charcoal grill for medium-high, direct heat.\n" +
                 "2 Make the marinade and coat the chicken: In a large bowl, stir together the chili powder, oregano, \n" +
@@ -125,7 +111,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
         spicyGrilledChickenTacos.setNotes(new Notes("I like to put all the toppings in little bowls on a big platter at the center of the table: avocados, radishes,\n" +
                 " tomatoes, red onions, wedges of lime, and a sour cream sauce. I add arugula, as well – this green isn’t traditional for tacos, but we always \n" +
-                " seem to have some in the fridge and I think it adds a nice green crunch to the tacos.", spicyGrilledChickenTacos));
+                " seem to have some in the fridge and I think it adds a nice green crunch to the tacos."));
 
         spicyGrilledChickenTacos.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
 
