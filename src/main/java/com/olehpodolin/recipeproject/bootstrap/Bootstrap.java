@@ -4,12 +4,14 @@ import com.olehpodolin.recipeproject.domain.*;
 import com.olehpodolin.recipeproject.repositories.RecipeRepository;
 import com.olehpodolin.recipeproject.services.CategoryService;
 import com.olehpodolin.recipeproject.services.UnitOfMeasureService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Slf4j
 @Component
 public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -33,6 +35,8 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     private void initData() {
+
+        log.debug("I'm in the Bootstrap class");
 
         Recipe guacamole = new Recipe();
 
