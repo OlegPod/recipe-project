@@ -1,0 +1,39 @@
+package com.olehpodolin.recipeproject.controllers;
+
+import com.olehpodolin.recipeproject.services.RecipeService;
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.ui.Model;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+public class IndexControllerTest {
+
+    @Mock
+    RecipeService recipeService;
+
+    @Mock
+    Model modelMock;
+
+    IndexController indexController;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+
+        indexController = new IndexController(recipeService);
+
+    }
+
+    @Test
+    public void getIndexPage() {
+
+        String viewName = indexController.getIndexPage(modelMock);
+
+        assertEquals("index", viewName);
+        verify(recipeService, times(1)).getRecipes();
+        verify(modelMock, times(1)).addAttribute(eq("recipes"), anySet());
+    }
+}
