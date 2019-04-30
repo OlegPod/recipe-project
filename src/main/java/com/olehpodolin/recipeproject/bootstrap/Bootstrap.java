@@ -41,6 +41,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Recipe guacamole = new Recipe();
 
         guacamole.getCategories().add(categoryService.getCategory("Mexican"));
+        guacamole.getCategories().add(categoryService.getCategory("Vegetarian"));
         guacamole.setDifficulty(Difficulty.EASY);
         guacamole.setPrepTime(10);
         guacamole.setCookTime(10);
@@ -82,6 +83,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
         Recipe spicyGrilledChickenTacos = new Recipe();
 
         spicyGrilledChickenTacos.getCategories().add(categoryService.getCategory("Mexican"));
+        spicyGrilledChickenTacos.getCategories().add(categoryService.getCategory("Fast Food"));
         spicyGrilledChickenTacos.setDifficulty(Difficulty.EASY);
         spicyGrilledChickenTacos.setPrepTime(20);
         spicyGrilledChickenTacos.setCookTime(15);
