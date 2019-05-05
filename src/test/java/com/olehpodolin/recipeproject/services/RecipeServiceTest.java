@@ -1,5 +1,7 @@
 package com.olehpodolin.recipeproject.services;
 
+import com.olehpodolin.recipeproject.converters.RecipeCommandToRecipe;
+import com.olehpodolin.recipeproject.converters.RecipeToRecipeCommand;
 import com.olehpodolin.recipeproject.domain.Recipe;
 import com.olehpodolin.recipeproject.repositories.RecipeRepository;
 import org.junit.Before;
@@ -22,11 +24,17 @@ public class RecipeServiceTest {
     @Mock
     RecipeRepository recipeRepository;
 
+    @Mock
+    RecipeToRecipeCommand recipeToRecipeCommand;
+
+    @Mock
+    RecipeCommandToRecipe recipeCommandToRecipe;
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        recipeService = new RecipeService(recipeRepository);
+        recipeService = new RecipeService(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
     }
 
     @Test
