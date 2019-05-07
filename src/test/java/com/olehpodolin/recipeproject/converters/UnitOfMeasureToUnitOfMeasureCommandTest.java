@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
 public class UnitOfMeasureToUnitOfMeasureCommandTest {
 
     public static final Long ID_VALUE = 1L;
-    public static final String UOM_DESCRIPTION = "description";
+    public static final String UOM_DESCRIPTION = "uom";
 
     UnitOfMeasureToUnitOfMeasureCommand converter;
 
@@ -43,6 +43,6 @@ public class UnitOfMeasureToUnitOfMeasureCommandTest {
         //then
         assertNotNull(command);
         assertEquals(ID_VALUE, command.getId());
-        assertEquals(UOM_DESCRIPTION, command.getDescription());
+        assertEquals(UOM_DESCRIPTION, command.getUom());
     }
 }

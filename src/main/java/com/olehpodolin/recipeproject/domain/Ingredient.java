@@ -1,6 +1,7 @@
 package com.olehpodolin.recipeproject.domain;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,9 +13,9 @@ public class Ingredient {
 
     public Ingredient() {}
 
-    public Ingredient(BigDecimal amount, UnitOfMeasure unitOfMeasure, String description) {
+    public Ingredient(BigDecimal amount, UnitOfMeasure uom, String description) {
         this.amount = amount;
-        this.unitOfMeasure = unitOfMeasure;
+        this.uom = uom;
         this.description = description;
     }
 
@@ -28,6 +29,6 @@ public class Ingredient {
     private Recipe recipe;
 
     @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMeasure unitOfMeasure;
+    private UnitOfMeasure uom;
 
 }

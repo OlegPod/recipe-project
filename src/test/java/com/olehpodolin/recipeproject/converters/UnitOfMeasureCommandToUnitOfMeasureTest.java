@@ -11,7 +11,7 @@ import static org.junit.Assert.assertNotNull;
 public class UnitOfMeasureCommandToUnitOfMeasureTest {
 
     public static final Long ID_VALUE = 1L;
-    public static final String UOM_DESCRIPTION = "description";
+    public static final String UOM_DESCRIPTION = "uom";
 
     UnitOfMeasureCommandToUnitOfMeasure converter;
 
@@ -35,7 +35,7 @@ public class UnitOfMeasureCommandToUnitOfMeasureTest {
         //given
         UnitOfMeasureCommand command = new UnitOfMeasureCommand();
         command.setId(ID_VALUE);
-        command.setDescription(UOM_DESCRIPTION);
+        command.setUom(UOM_DESCRIPTION);
 
         //when
         UnitOfMeasure unitOfMeasure = converter.convert(command);
