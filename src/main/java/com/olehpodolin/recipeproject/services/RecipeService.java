@@ -57,4 +57,8 @@ public class RecipeService {
         log.debug("Saved recipe id: " + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
     }
+    
+    public void deleteById(Long idToDelete) {
+        recipeRepository.deleteById(idToDelete);
+    }
 }
