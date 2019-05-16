@@ -1,6 +1,8 @@
 package com.olehpodolin.recipeproject.controllers;
 
 import com.olehpodolin.recipeproject.commands.IngredientCommand;
+import com.olehpodolin.recipeproject.commands.RecipeCommand;
+import com.olehpodolin.recipeproject.commands.UnitOfMeasureCommand;
 import com.olehpodolin.recipeproject.services.IngredientService;
 import com.olehpodolin.recipeproject.services.RecipeService;
 import com.olehpodolin.recipeproject.services.UnitOfMeasureService;
@@ -42,6 +44,25 @@ public class IngredientController {
                 Long.valueOf(recipeId), Long.valueOf(id)));
 
         return "recipe/ingredient/show";
+    }
+
+    @GetMapping
+    @RequestMapping("/recipe/{recipeId}/ingredient/new")
+    public String newIngredient(@PathVariable String recipeId, Model model) {
+        // make sure we have a good Recipe Id
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+        // todo throw exception if not
+
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+
+        // init UnitOfMeasure
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList", unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
     }
 
     @GetMapping
