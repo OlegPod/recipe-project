@@ -44,11 +44,9 @@
                                 </ul>
                             </div>
                             <div class="col-md-6">
-                                <img src="https://www.simplyrecipes.com/wp-content/uploads/2014/05/guacamole-horiz-a-1600-600x427.jpg"
-                                     th:src="@{/images/no_image-400x400.jpg}"
+                                <img src="/static/images/no_image-400x400.jpg"
+                                     th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}"
                                      width="200" height="200">
-
-
                             </div>
                         </div>
                         <div class="row">
