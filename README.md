@@ -5,6 +5,8 @@ Persistence to the database is implemented through Command objects and Converter
 Also implemented Exception Handlers and Data Validation.
 
 ## Stack of technologies that are used in this application:
+* Maven
+* Hibernate
 * Spring Data JPA
 * Spring MVC
 * Project Lombok
